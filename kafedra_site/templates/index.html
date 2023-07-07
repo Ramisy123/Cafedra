@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{title}}</h2>
+    {% if request.user.is_authenticated %}
+    {% if role != 'Students' %}
+    <a class="btn btn-primary" href = "{% url 'article_create' %}">Добавить новость</a>
+    {% endif %}{% endif %}
+
+    <ul class="list-group mt-2">
+        {% for i in list_articles %}
+            <li class="list-group-item list-group-item-primary" style = 'background-color:#cfe2e1c5; font-weight: bold;'>
+                <h5>{{i.name}}</h5>
+                <p>{{i.text}}</p>
+                <p>{% if i.file %}<a href='{{i.file.url}}'>{{i.file}}</a>{% endif %}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    {% url 'article_create' as url %}
+    {% if url == request.path %}
+    <form method="POST" enctype="multipart/form-data" style = 'color:azure; margin-top: 1%;'>
+        {% csrf_token %}
+        {{form}}
+        <button class = 'btn btn-primary mt-3' type="submit">Опубликовать</button>
+     </form> 
+     {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    <div class = 'col-4'>
+        <form id='login' method= 'post' style = 'color:azure; margin-top: 1%;'>
+            {% csrf_token %}
+            {{form}}
+            <button form='login' type="submit" class="btn btn-primary mt-4">Войти</button>
+          </form>
+          
+    </div>
+
+    {% endblock %}

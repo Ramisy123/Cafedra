@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Расслабляйся</title>
+  <link rel="stylesheet" href="{% static 'kafedra_site/css/style.css' %}">
+  <script src="{% static 'kafedra_site/js/script.js' %}" ></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--------------------------------------------------------------------
+It's the classical Conway's game of life but every stage is stacked on top of the previous. You can navigate it with mouse and keyboard, stop the generation and restart it.
+Everytime you restart it the starting state is randomically generated, so everytime you get a different result.
+--------------------------------------------------------------------->
+
+<button id="stop"> STOP </button>
+<button id="restart"> RESTART </button>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.min.js'></script>
+<script src='https://codepen.io/k3no/pen/BLYpaX.js'></script><script  src="{% static 'kafedra_site/js/script.js' %}"></script>
+
+</body>
+</html>

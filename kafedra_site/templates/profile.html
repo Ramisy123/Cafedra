@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    
+{% if update %}
+
+    <form id='update_data' method= 'post' enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{form}}
+    </form>
+    <button form='update_data' type="submit" class="btn btn-primary" href = "{% url 'profile' %}">Обновить</button>
+
+{% else %}
+
+  <table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col" >Фото</th>
+        <th scope="col">Логин</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Группа</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for i in list %}{% if i.author == request.user %}
+
+            <tr >
+                <td width="40%"> 
+                    {% if i.photo %}
+                        <img src="{{i.photo.url}}" width="100%">
+                    {% endif %}
+                    <a href='{% url "profile_update" i.pk %}'>Изменить</a>
+                </td>
+                <td>{{i.author}}</td>
+                <td>{{i.fio}}</td>
+                <td>{{i.group}}</td>
+            </tr>
+            
+        {% endif %}{% endfor %}
+    </tbody>
+  </table>
+
+  {% endif %}
+ 
+
+    {% endblock %}
